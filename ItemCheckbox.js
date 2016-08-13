@@ -54,11 +54,12 @@ export default class ItemCheckbox extends React.Component {
       height: this.props.size,
       backgroundColor: this.state.bg_color,
       borderColor: this.props.color,
-      borderWidth: 2,
+      borderWidth: 0,
       borderRadius: this.props.size/2,
       justifyContent: 'center',
       alignItems: 'center',
       padding: 2,
+      marginRight: 10
     };
   }
 
@@ -121,14 +122,19 @@ export default class ItemCheckbox extends React.Component {
         <TouchableWithoutFeedback
           onPress={this._completeProgress.bind(this, false)}
           >
-          <View style={this._getCircleCheckStyle()}>
-            <Icon
-              name={this.props.icon}
-              size={this._getIconSize()}
-              color={this.props.backgroundColor}
-              backgroundColor='transparent'
-              style={this._getCircleIconStyle()}
-            />
+          <View style={{flexDirection: 'row'}}>
+            <View style={this._getCircleCheckStyle()}>
+              <Icon
+                  name={this.props.icon}
+                  size={this._getIconSize()}
+                  color={this.props.backgroundColor}
+                  backgroundColor='transparent'
+                  style={this._getCircleIconStyle()}
+              />
+            </View>
+            <View style={{flexDirection: 'column'}}>
+              <Text style={this.props.checkboxTextStyle}>{this.props.checkboxText}</Text>
+            </View>
           </View>
         </TouchableWithoutFeedback>
       </View>
